@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const db = require('./db/db')
 const app = express()
 
 require('dotenv').config()
@@ -9,14 +10,10 @@ const PORT = process.env.PORT
 app.use(express.json())
 app.use(cors())
 
-
-app.get('/', (req, res)=> {
-    res.send('Hello World')
-})
-
 const server = () => {
+    db()
     app.listen(PORT, () => {
-        console.log('Ouvindo a porta: ', PORT)
+        console.log('Ouvindo a PORTA', PORT);
     })    
 }
 
